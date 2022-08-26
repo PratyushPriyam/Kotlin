@@ -1,0 +1,292 @@
+import java.util.Scanner
+
+fun main(/*args: Array<String>*/) { // args in an array of strings.
+    println("Hello, world!!! edited text.")
+    val data = 23
+    println(data)
+    myFunctionWithoutParameter() // function call
+    myFunctionWithParameter(data)
+    val sumValue: Int = myFunctionWithReturnValue(data, 1)
+    println("The incremented value is : $sumValue")
+//
+//    // WHEN -> similar to SWITCH in java
+      val sc = Scanner(System.`in`) // `` is present above the tab button on the left top of the keyboard.
+//    println("Enter a value between 0 and 3")
+//    when(sc.next()) {
+//        "0" -> println("Zero")
+//        "1" -> println("One")
+//        "2" -> println("Two")
+//        "3" -> println("Three")
+//        "4", "5", "6" -> println("4 to 6") // multiple test cases. Range wise.
+//        else -> println("Invalid Input")
+//    }
+//    println("Enter an integer value")
+//    val intNum: Int = sc.nextInt()
+//    println("Entered number is : $intNum")
+//
+//    println("Enter a digit")
+//    when(sc.next()) {
+//        "a", "e", "i", "o", "u" -> println("The entered digit is a Vowel")
+//        else -> println("The entered digit is a consonant")
+//    }
+//
+//    //using range in when.
+//    println("Enter a number to check in range : ")
+//    val rangeNum = sc.nextInt()
+//    when(rangeNum) {
+//        in 0..9 -> println("Range is from 0 to 9")
+//        in 10..19 -> println("Range is from 10 to 19")
+//        in 20..29 -> println("Range is from 20 to 29")
+//        !in 0..29 -> println("Beyond range") // acts similar to else block. Can use any of the two.
+//    }
+//    val num: Any = "CSE" // Any type of data can be stored in this variable.
+//    when(num) {
+//        is Int -> println("It is an integer")
+//        is String -> println("It is an string")
+//        is Float -> println("It is an float")
+//    }
+    println("Enter a number to check if it is even or odd : ")
+    val numCheck: Int = sc.nextInt()
+    if(numCheck % 2 == 0) {
+        println("Even")
+    }
+    else {
+        println("Odd")
+    }
+
+    // for loop
+    for(i: Int in 0..10 step 3) {
+        println(i)
+    }
+    println("Step 2 : ")
+    for(i: Int in 10 downTo 0 step 2) { // downTo is used like decrement operator for i.
+        println(i)
+    }
+
+    println("Printing integer array : ")
+    val arr = arrayOf(1, 4, 5, 6, 3, 5)
+    for(i: Int in arr) {
+        println(i)
+    }
+    println("Printing String array : ")
+    val arrStr = arrayOf/*<String>*/("1", "4", "5", "6", "3", "5") // <String> was redundant.
+    for(i: String in arrStr) {
+        println(i)
+    }
+    println("Printing Character array : ")
+//    val arrChar = arrayOf<Char>('1', '1', '1', '1', '1', '1') // commented because arrChar is never used.
+    for(i: String in arrStr) {
+        println(i)
+    }
+    val arrS = arrayOf("1", "4", "5", "6", "3", "5") // implicit type of array.
+    for((index, value)  in arrS.withIndex()) {
+        println("index is $index value is $value")
+    }
+    println("Printing array elements")
+    for(element in arrS) {
+        println("array elements are : $element")
+    }
+    // val charArray = intArrayOf(1, 2, 3, 4, 5) // similar to arrayOf<Int>.
+    // arrayOf<Int>(1, 2, 3) -> explicit type of data.
+    // use L for long type data & f for float type data.
+    println("Array created using class")
+    val arr3 = Array(3) { i -> i*2} // using lambda function
+    for(element in arr3) { // can also use (i in 0 .. arr3.size-1)
+        println("array element : $element")
+    }
+    println("Previous elem. at position 0 is : ${arr3[0]}")
+    arr3[0] = -1 // can also use arr3.set(0, -1)
+    println("Changed elem. at position 0 is : ${arr3[0]}")
+    // array.set(index, value) is used to add new data into the array.
+    println("Getting elem. at position arr3.size-1 is : ${arr3[arr3.size-1]}") // arr3.get(arr3.size-1) can also be used
+    println("Using for each loop with arr3")
+    arr3.forEach { i -> println(i) } // Using for-each along with lambda function.
+
+    // 22-08-2022 STRINGS
+    val str = "Pratyush"
+    for(i in str.indices) {
+        println("index $i holds ${str[i]}") // use [] brackets, or use .get() method to fetch character from string.
+    }
+    println("index 0 using .get() method holds ${str[0]}") // str.get(0) can also be used.
+//  println("index 10 using .get() method holds ${str.get(10)}") // StringIndexOutOfBoundsException
+//  Read about .set()
+    val str1 = String() // str1 is null. Using default String constructor.
+    println("Using subsequence to get str value from 0 to 2 : ${str.subSequence(0, 3)}")
+    // subsequence acts just like substr of java. It takes in two values -> (starting index, ending index-1).
+    println("Comparing str and str1 : ${str.compareTo(str1)}") // 0 -> equal, >0 -> not equal. 1st string greater than 2nd string
+    // <0 -> str2 greater than str1. Comparing ASCII values.
+    // Memory allocation in java and kotlin.
+    val str2 = "Hello"
+//    val str3 = "Hey" // Commenting because str3 is never used.
+    val str4 = "Hello"
+//    println("=== operator on str2 & str3 : ${str2 === str3}") // Different memory references use = = = operator for checking
+//    The above line always returns false because str 2 is never equal to str3.
+    println("=== operator on str2 & str4 : ${str2 === str4}") // Same memory references use = = = operator for checking
+    // \t -> Tab, \n -> New Line
+//    val bb: (Int) -> Unit = {bb} // without type annotations. Not complete code.
+
+    // Lambda with args and default return type.
+    val c = {x: Int, y: Int -> x+y}
+    val cResult = c(5, 7)
+    println("Lambda c result (cResult) -> $cResult")
+
+    // Another type of lambda expression.
+    // Lambda with args and default return type and without annotations.
+    val d: (Int, Int) -> Int={a, b -> a+b}
+    val dResult = d(10, 20)
+    println("Lambda d result (dResult) -> $dResult")
+
+    // Lambda expression with no args, with return type
+    val e = { "Hello" }
+    val eResult = e()
+    println("Lambda e  result (eResult) -> $eResult")
+
+    // No args with defined return type.
+    val f: ()-> String = {"Hello"}
+    val fResult = f()
+    println("Lambda f  result (fResult) -> $fResult")
+
+    // with int type arg and String type output.
+    val g: (Int, Int) -> String = {a, b -> (a+b).toString()}
+    val gResult = g(10, 5)
+    println("Lambda g  result (gResult) -> $gResult")
+
+    //Lambda class extension
+    val h: String.(Int) -> String = {this + it}
+    val hResult = "hello".h(98)
+    println("Lambda h  result (hResult) -> $hResult")
+
+    // Similar example as h. i,e above one.
+    val i: Int.(Int) -> Int = {this + it}
+    val iResult = 90.i(10)
+    println("Lambda i  result (iResult) -> $iResult")
+
+    // it: implicit name of single parameter
+    // Use of it
+    val j = arrayOf(1, 2, -3, 5, 6)
+    println("j.filter shorthand use :  ${j.filter { it > 0 }}") // shorthand
+    println("j.filter longhand use :  ${j.filter { j -> j > 0 }}")  // longhand
+    // Both the above lines are basically rhe same. Just the writing style is different.
+
+    // Lambda return a String type data using the return keyword.
+    val k = fun(x: Int, y:Int): String {
+        return if(x>y) {
+            "x is greater"
+        }
+        else if(x == y) {
+            "x and y are equal"
+        }
+        else {
+            "y is greater"
+        }
+
+        // the above conditional statement could also be written as ->
+//        if(x>y) {
+//            return "x is greater"
+//        }
+//        else if(x == y) {
+//            return "x and y are equal"
+//        }
+//        else {
+//            return "y is greater"
+
+        }
+    // Anonymous without return type
+    val anon = fun(x: Int, y: Int) = " " + (x+y)
+    println("Anon without return type : ${anon(2, 4)}")
+
+
+    // Anonymous with return type
+    val anon1 = fun(a: Int, b: Int): Int {
+        return a*b
+    }
+    println("Anon with return type : ${anon1(3, 5)}")
+
+    // Function calling function
+    withoutReturn("HO fxn + no return ", ::functionExp1)
+    println("Higher order function")
+    withReturn(::functionExp2)
+
+    println("Return function as a return type")
+    val result = ReturnFxn() // it will return actual function
+    val finalResult = result(5, 5)
+    println("result : $result and output : $finalResult")
+
+    println("FUnction takes lambda but returns nothing")
+    higherFunctionWithLambdaWithoutReturn(lambdaExp1)
+    println("function takes lambda and returns")
+    higherFunctionWithLambdaWithReturn(lambdaExp2)
+
+    println("calling non inline function having lambda type arguments")
+    withoutInlineFunction({anyFxn()})
+
+    println("Library infix notation functions")
+    val a: Int = 3
+    val b: Int = 4
+    println("a.minus(b) : ${a.minus(b)}")
+    println("a - b : ${a - b}")
+}
+fun withoutInlineFunction(lambdaExp:() -> Unit) {
+    lambdaExp()
+}
+fun anyFxn() {
+    println("Hey")
+}
+fun higherFunctionWithLambdaWithoutReturn(lambdaOneWithoutReturn:()-> Unit) {
+    lambdaOneWithoutReturn()
+}
+val lambdaExp1:()-> Unit= {
+    println("I do not return anything")
+}
+fun higherFunctionWithLambdaWithReturn(lambdaWithReturn: (Int, Int) -> Int) {
+    var result = lambdaWithReturn(2, 4)
+}
+val lambdaExp2 = {
+    a: Int, b: Int -> a+b
+}
+
+fun ReturnFxn(): (Int, Int) -> Int {
+    return ::ActualFunctionExp
+}
+fun ActualFunctionExp(a: Int, b: Int): Int {
+    return a+b
+}
+// function calling function
+fun withoutReturn(str: String, myFunction: (String) -> Unit) {
+    myFunction("No return value here")
+}
+fun functionExp1(str: String): Unit { // Unit means the function does not return anything.
+    println(str)
+}
+fun withReturn(myfunc2: (Int, Int) -> Int) {
+    val result = myfunc2(2, 5)
+    println(result)
+}
+fun functionExp2(a: Int, b: Int): Int {
+    return a+b
+}
+// function calling function
+
+//WAP to find if the given number is odd
+fun myFunctionWithoutParameter() { // custom function
+    println("Function message")
+}
+fun myFunctionWithParameter(a: Int) {
+    println("The passed integer is : $a")
+}
+fun myFunctionWithReturnValue(a: Int, b:Int): Int { // the "Int" after ":" represents the returning data type.
+
+    return a+b
+}
+
+
+// Default function in kotlin. -> defaultArg().
+// Recursion. Factorial of a number.
+// Lambda with args, no return type with type annotation, also the other one.
+// variable blocks and calling them like functions.
+// return type Unit does not return anything. It is not an error.
+// Use of this keyword.
+// Use of it keyword in kotlin.
+// Anonymous function in kotlin.
+// Order wise function calling.
+// Kotlin inline functions.
